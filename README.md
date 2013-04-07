@@ -29,7 +29,7 @@ lib/
     jline-1.0.jar
     servlet-api-2.4.jar
     gant_groovy1.8-1.9.6.jar
-    commons-cli-1.2.jar[/code]
+    commons-cli-1.2.jar
 ```
 
 
@@ -45,18 +45,18 @@ load ~/standalone/wy/WEB-INF/classes
 load ~/standalone/wy/WEB-INF/lib/*.jar
 load ~/standalone/lib/*.jar
 load ~/standalone/bootstrap/*.groovy
-load ${tools.jar}[/code]
+load ${tools.jar}
 ```
 
 xxx.groovy内容如下：
 
-```java
+```groovy
 import bootstrap.*
 
 def wyBase=System.getenv('WY_WEB_APP_BASE')
 def appCtx=Bootstrap.bootstrap(wyBase)
 
-//使用GORM的业务代码...[/code]
+//使用GORM的业务代码...
 ```
 
 bootstrap/Bootstrap.groovy是启动Gorm环境的类。
