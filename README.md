@@ -13,7 +13,7 @@
 共有以下文件（假设在~/standalone目录下）：
 
 
-```
+```tree
 wy-starter.conf
 log4j.properties
 xxx.groovy
@@ -71,7 +71,7 @@ bootstrap/RF*只是在grails的GrailsPluginManagerFactoryBean.groovy和GrailsApp
 最后，要运行xxx.groovy，可以这样：
 
 
-```shell
+```sh
 cd ~/standalone
 export GROOVY_CONF=~/standalone/wy-starter.conf
 export WY_WEB_APP_BASE=~/standalone/wy
