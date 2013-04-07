@@ -1,6 +1,6 @@
-（本人研究的方案，2012年7月首先在javaeye分享）
+（本人研究的方案，2012年7月首先在javaeye发表）
 
-*Gorm* 是 *Grails* 框架的orm（基于Hibernate）。Gorm用起来很方便，比直接用Hibernate方便。
+**Gorm** 是 **Grails** 框架的orm（基于Hibernate）。Gorm用起来很方便，比直接用Hibernate方便。
 
 很多用过Grails框架的开发者都有把Gorm独立拿出来使用的想法。比如有一些代码是在Grails环境里写的，但是想脱离web服务器使用。grails倒是可以命令行运行脚本，但是需要在grails应用的目录上运行，需要源代码，并且会有构建过程。
 
