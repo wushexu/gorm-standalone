@@ -1,4 +1,4 @@
-（本人研究的方案，2012年7月首先在javaeye发表）
+（2012年7月首先在javaeye发表）
 
 **Gorm** 是 **Grails** 框架的orm（基于Hibernate）。Gorm用起来很方便，比直接用Hibernate方便。
 
@@ -40,7 +40,7 @@ wy-starter.conf是groovy的启动配置文件；xxx.groovy是要运行的脚本�
  
 wy-starter.conf内容如下：
 
-```
+```conf
 load ~/standalone/wy/WEB-INF/classes
 load ~/standalone/wy/WEB-INF/lib/*.jar
 load ~/standalone/lib/*.jar
@@ -79,4 +79,5 @@ groovy xxx.groovy
 ```
  
 注意GROOVY_CONF变量静态定义的话(如放在~/.profile)会影响i此用户运行其他groovy脚本。
+
 以上命令以linux环境为例。如果环境是windows也差不多（可能要改一下groovy/bin/groovy.bat，以使用GROOVY_CONF环境变量配置的启动配置文件。
