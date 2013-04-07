@@ -1,0 +1,6 @@
+
+cd ~/standalone
+export GROOVY_CONF=~/standalone/wy-starter.conf
+export WY_WEB_APP_BASE=~/standalone/wy
+groovy xxx.groovy
+
