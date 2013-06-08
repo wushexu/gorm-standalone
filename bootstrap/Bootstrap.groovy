@@ -12,45 +12,45 @@ import org.springframework.mock.web.MockServletContext
 
 class Bootstrap {
 
-    static def bootstrap(appBase){
+	static def bootstrap(appBase){
 
 		if(appBase.endsWith('/') || appBase.endsWith('\\')){
 			appBase=appBase[0..-2]
 		}
 
-        def beanDefinitions = new WebBeanBuilder().beans {
-            grailsResourceLoader(GrailsResourceLoaderFactoryBean)
-            grailsDescriptor(FileSystemResource,"$appBase/WEB-INF/grails.xml")
-            grailsApplication(RFGrailsApplicationFactoryBean){
-                grailsDescriptor = ref(grailsDescriptor)
-                grailsResourceLoader = ref("grailsResourceLoader")
-            }
-            pluginManager(RFGrailsPluginManagerFactoryBean){
-                grailsDescriptor = ref(grailsDescriptor)
-                application = ref(grailsApplication)
-            }
-            grailsConfigurator(GrailsRuntimeConfigurator,grailsApplication){
-                pluginManager = ref("pluginManager")
-            }
-        }
+		def beanDefinitions = new WebBeanBuilder().beans {
+			grailsResourceLoader(GrailsResourceLoaderFactoryBean)
+			grailsDescriptor(FileSystemResource,"$appBase/WEB-INF/grails.xml")
+			grailsApplication(RFGrailsApplicationFactoryBean){
+				grailsDescriptor = ref(grailsDescriptor)
+				grailsResourceLoader = ref("grailsResourceLoader")
+			}
+			pluginManager(RFGrailsPluginManagerFactoryBean){
+				grailsDescriptor = ref(grailsDescriptor)
+				application = ref(grailsApplication)
+			}
+			grailsConfigurator(GrailsRuntimeConfigurator,grailsApplication){
+				pluginManager = ref("pluginManager")
+			}
+		}
 
-        def appCtx = beanDefinitions.createApplicationContext()
+		def appCtx = beanDefinitions.createApplicationContext()
 
-        //grailsApp = appCtx.grailsApplication
-        def servletContext = new MockServletContext(appBase,new PluginPathAwareFileSystemResourceLoader())
-        appCtx.servletContext=servletContext
-        servletContext.setAttribute(ApplicationAttributes.APPLICATION_CONTEXT, appCtx)
+		//grailsApp = appCtx.grailsApplication
+		def servletContext = new MockServletContext(appBase,new PluginPathAwareFileSystemResourceLoader())
+		appCtx.servletContext=servletContext
+		servletContext.setAttribute(ApplicationAttributes.APPLICATION_CONTEXT, appCtx)
 
-        ExpandoMetaClass.enableGlobally()
+		ExpandoMetaClass.enableGlobally()
 
-        def webCtx = GrailsConfigUtils.configureWebApplicationContext(servletContext, appCtx)
-        //GrailsConfigUtils.executeGrailsBootstraps(grailsApp, webCtx, servletContext)
+		def webCtx = GrailsConfigUtils.configureWebApplicationContext(servletContext, appCtx)
+		//GrailsConfigUtils.executeGrailsBootstraps(grailsApp, webCtx, servletContext)
 
-        def persistenceInterceptor = webCtx.containsBean('persistenceInterceptor') ? webCtx.persistenceInterceptor : null
-        persistenceInterceptor?.init()
+		def persistenceInterceptor = webCtx.containsBean('persistenceInterceptor') ? webCtx.persistenceInterceptor : null
+		persistenceInterceptor?.init()
 
-        return webCtx
-    }
+		return webCtx
+	}
 
 }
 
