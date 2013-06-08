@@ -4,7 +4,7 @@
 
 很多用过Grails框架的开发者都有把Gorm独立拿出来使用的想法。比如有一些代码是在Grails环境里写的，但是想脱离web服务器使用。grails倒是可以命令行运行脚本，但是需要在grails应用的目录上运行，需要源代码，并且会有构建过程。
 
-这个问题grails官方没有提供完整的方案。我通过查看grails的相关代码，解决了这个问题。贴出来和大家分享。
+这个问题grails官方没有提供完整的方案。我通过查看grails的相关代码，解决了这个问题。
 
 
 这个方案没有完全脱离grails，还是要使用grails的包，还是按grails的方式启动，只是过滤了不需要的资源（如Controller和Taglib）和插件。
@@ -80,4 +80,4 @@ groovy xxx.groovy
  
 注意GROOVY_CONF变量静态定义的话(如放在~/.profile)会影响i此用户运行其他groovy脚本。
 
-以上命令以linux环境为例。如果环境是windows也差不多（可能要改一下groovy/bin/groovy.bat，以使用GROOVY_CONF环境变量配置的启动配置文件。
+以上命令以linux环境为例。如果环境是windows也差不多（可能要改一下groovy/bin/groovy.bat，以使用GROOVY_CONF环境变量配置的启动配置文件）。
